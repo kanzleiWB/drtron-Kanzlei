@@ -2,32 +2,232 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body{
+  background-color: #FAFAFA;
+  color: #252B42;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* Typography */
+h1{
+  font-size: 58px;
+  font-weight: bolder;
+  line-height: 80px;
+}
+h2{
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 60px;
+}
+
+h3{
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 48px;
+}
+h4{
+  font-size: 24px;
+  font-weight: medium;
+  line-height: 36px;
+}
+h5{
+  font-size: 20px;
+  font-weight: medium;
+  line-height: 30px;
+}
+h6{
+  font-size: 16px;
+  font-weight: medium;
+  line-height: 24px;
+}
+p{
+  font-size: 14px;
+  line-height: 20px;
+}
+a{
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+}
+.btn-text{
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.control {
+    font-family: arial;
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+    .control input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+.control_indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background: #e6e6e6;
+    border: 0px solid #000000;
+    border-radius: 20px;
+}
+.control:hover input ~ .control_indicator,
+.control input:focus ~ .control_indicator {
+    background: #cccccc;
+}
+
+.control input:checked ~ .control_indicator {
+    background: #2aa1c0;
+}
+.control:hover input:not([disabled]):checked ~ .control_indicator,
+.control input:checked:focus ~ .control_indicator {
+    background: #2aa1c0;
+}
+.control input:disabled ~ .control_indicator {
+    background: #e6e6e6;
+    opacity: 0.6;
+    pointer-events: none;
+}
+.control_indicator:after {
+    box-sizing: unset;
+    content: '';
+    position: absolute;
+    display: none;
+}
+.control input:checked ~ .control_indicator:after {
+    display: block;
+}
+.control-checkbox .control_indicator:after {
+    left: 8px;
+    top: 4px;
+    width: 3px;
+    height: 8px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.control-checkbox input:disabled ~ .control_indicator:after {
+    border-color: #e6e6e6;
+}
+.control-checkbox .control_indicator::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-left: -1.3rem;
+    margin-top: -1.3rem;
+    background: #2aa1c0;
+    border-radius: 3rem;
+    opacity: 0.6;
+    z-index: 99999;
+    transform: scale(0);
+}
+
+.rotating-icon {
+  animation: toggleFaqIcon 1s ease 0s 1 normal forwards;
+}
+
+.answer {
+  animation: myAnim 1s ease 0s 1 normal forwards;
+}
+
+.contact-section {
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+@keyframes toggleFaqIcon {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-90deg);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes myAnim {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.magicpattern { 
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: repeat;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22b%22%3E%3Cpath fill=%22currentColor%22 d=%22M787 672.5Q699 845 495.5 853t-309-172.5Q81 500 169 289.5t295-148Q671 204 773 352t14 320.5Z%22%2F%3E%3C%2FclipPath%3E%3Cpattern id=%22c%22 patternUnits=%22userSpaceOnUse%22 width=%2225%22 height=%2225%22 viewBox=%220 0 100 100%22 fill=%22%23252B42%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2212.5%22%2F%3E%3C%2Fpattern%3E%3Cfilter id=%22a%22 x=%22-50vw%22 y=%22-50vh%22 width=%22100vw%22 height=%22100vh%22%3E%3CfeFlood flood-color=%22%23fff%22 result=%22neutral-gray%22%2F%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%222.5%22 numOctaves=%22100%22 stitchTiles=%22stitch%22 result=%22noise%22%2F%3E%3CfeColorMatrix in=%22noise%22 type=%22saturate%22 values=%220%22 result=%22destaturatedNoise%22%2F%3E%3CfeComponentTransfer in=%22desaturatedNoise%22 result=%22theNoise%22%3E%3CfeFuncA type=%22table%22 tableValues=%220 0 0.1 0%22%2F%3E%3C%2FfeComponentTransfer%3E%3CfeBlend in=%22SourceGraphic%22 in2=%22theNoise%22 mode=%22soft-light%22 result=%22noisy-image%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg filter=%22url(%23a)%22 clip-path=%22url(%23b)%22%3E%3Cpath fill=%22url(%23c)%22 d=%22M787 672.5Q699 845 495.5 853t-309-172.5Q81 500 169 289.5t295-148Q671 204 773 352t14 320.5Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}
+
+footer{
+  background: rgb(179,255,251);
+background: linear-gradient(36deg, rgba(179,255,251,1) 0%, rgba(215,195,244,1) 100%);
+border-radius:  100% 0% 100% 0% / 49% 100% 0% 51% ;
+}
+
+@media only screen and (max-width: 768px) {
+  h1{
+    font-size: 40px;
+    font-weight: bolder;
+    line-height: 60px;
+  }
+  h2{
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 48px;
+  }
+  h3{
+    font-size: 24px;
+    font-weight: medium;
+    line-height: 36px;
+  }
+  h4{
+    font-size: 20px;
+    font-weight: medium;
+    line-height: 30px;
+  }
+  h5{
+    font-size: 16px;
+    font-weight: medium;
+    line-height: 24px;
+  }
+  h6{
+    font-size: 14px;
+    font-weight: medium;
+    line-height: 24px;
+  }
+  p{
+    font-size: 14px;
+    line-height: 24px;
   }
 }

@@ -1,118 +1,224 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
+'use client'
+import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import TopNav from '@/components/TopNav'
+import mobileMockup from '../../public/assets/mobileMockup.png'
+import Footer from '@/components/Footer'
 
-const inter = Inter({ subsets: ["latin"] });
+const Home = () => {
+  const [userData, setUserData] = useState({
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    emailAddress: ''
+  })
+  const [faqs, setFaqs] = useState([])
+  const [disabled, setDisabled] = useState(true);
+  const [validPhoneNumber, setValidPhoneNumber] = useState(false);
+  const [validEmailAddress, setValidEmailAddress] = useState(false);
+  const [message, setMessage] = useState('')
+  const [error, setError] = useState('')
+  const validPhoneNumberRegx = /^(\+49)\d{9}$/;
+  const validEmailAddressRegx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-export default function Home() {
+  const fetchFAQs = async () => {
+    const response = await fetch('/api/getFaqsFromDB');
+    const data = await response.json();
+    if (Array.isArray(data)) {
+      setFaqs(data)
+    } else {
+      console.log('data is not an array');
+    }
+  };
+  useEffect(() => {
+    fetchFAQs();
+  }, []);
+
+  useEffect(() => {
+    setValidPhoneNumber(validPhoneNumberRegx.test(userData.phoneNumber));
+    if (userData.phoneNumber != '' && !validPhoneNumberRegx.test(userData.phoneNumber)) {
+      setError('Please enter valid number')
+    }
+    else {
+      setError('')
+    }
+  }, [userData.phoneNumber])
+  useEffect(() => {
+    setValidEmailAddress(validEmailAddressRegx.test(userData.emailAddress));
+    if (userData.emailAddress != '' && !validEmailAddressRegx.test(userData.emailAddress)) {
+      setError('Please Enter valid Email')
+    }
+    else {
+      setError('')
+    }
+  }, [userData.emailAddress])
+
+  useEffect(() => {
+    if (
+      (userData.firstName != '' &&
+        userData.lastName != '' &&
+        userData.phoneNumber &&
+        userData.emailAddress && validEmailAddress && validPhoneNumber
+      )
+    ) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [userData.firstName, userData.lastName, userData.phoneNumber, userData.emailAddress])
+
+
+  const handleUserData = async () => {
+    const data = userData;
+    try {
+      await fetch("/api/addUserData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then((response) => response.json())
+        .then((data) => {
+          setMessage('Successfully Submitted')
+          setUserData({
+            firstName: '',
+            lastName: '',
+            phoneNumber: '',
+            emailAddress: ''
+          })
+        })
+        .catch((error) => {
+          setError('An error has occurred. Please try again')
+        });
+    } catch (error) {
+      setError('An error has occoured. Please try again')
+    }
+    setTimeout(() => {
+      setMessage('')
+    }, 3000);
+    setTimeout(() => {
+      setError('')
+    }, 3000);
+  };
+
+  const showAccordion = (index) => {
+    document.getElementById(`answer${index}`).classList.toggle('hidden')
+    document.getElementById(`icon${index}`).classList.toggle('rotating-icon')
+  }
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <>
+      <TopNav />
+      <main className='w-full relative flex flex-col items-center justify-center gap-8'>
+        <h5 className={`bg-green-600 text-white px-5 py-3 border rounded-md fixed z-50 top-[50px] right-[50px] ${message === '' ? 'hidden' : ''}`}>{message}</h5>
+        <h5 className={`bg-red-600 text-white px-5 py-3 border rounded-md fixed z-50 top-[50px] right-[50px] ${error === '' ? 'hidden' : ''}`}>{error}</h5>
+        <DottedSVG top={'-15%'} left={'-5%'} />
+        <section className="mt-8 w-[90%] md:w-[80%] flex flex-col md:flex-row items-center justify-between z-40">
+          <div className="md:basis-1/2 flex flex-col items-start justify-between gap-2 md:gap-5">
+            <h3>Dein Geld in Gefahr!</h3>
+            <h1>Deine Chance auf 3320€</h1>
+            <h4>Prüfen Sie, ob Ihre Daten vom Datenleck
+              der Deutschen Bank betroffen sind.</h4>
+          </div>
+          <div className="md:basis-1/2 flex items-center justify-center relative">
+            <GradientSVG />
+            <Image src={mobileMockup} href='image' height={350} width={350} className='md:absolute'></Image>
+          </div>
+        </section>
+        <section id='input' className="w-[90%] md:w-[80%] relative flex flex-col items-center justify-between gap-8 z-40">
+          <div className="flex flex-col items-center justify-between gap-4 w-full md:w-[80%] text-center lg:w-[50%]">
+            <h2 className='leading-[44px]'>Ihr Konto ist in Gefahr. <br />
+              Jetzt auf Datenleck prüfen.</h2>
+            <p>Sichern Sie sich bis zu 3.320€ Entschädigung für Betroffene des  Datenlecks durch Angriffe der russischen Hackergruppe
+              Lazarus Group  auf Deutsche Bank-Server.</p>
+          </div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-5 w-full">
+            <InputField
+              label="Vorname"
+              type='text'
+              name="firstName"
+              id="firstName"
+              value={userData.firstName}
+              onChange={(e) => setUserData({ ...userData, firstName: e.target.value })}
             />
-          </a>
-        </div>
-      </div>
+            <InputField
+              label="Nachname"
+              type='text'
+              name="lastName"
+              id="lastName"
+              value={userData.lastName}
+              onChange={(e) => setUserData({ ...userData, lastName: e.target.value })}
+            />
+          </div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-5 w-full">
+            <InputField
+              label="E-Mail-Adresse"
+              type='email'
+              name="emailAddress"
+              id="emailAddress"
+              value={userData.emailAddress}
+              onChange={(e) => setUserData({ ...userData, emailAddress: e.target.value })}
+            />
+            <InputField
+              label="Telefonnummer"
+              type='text'
+              name="phoneNumber"
+              id="phoneNumber"
+              placeholder='+491234567890'
+              value={userData.phoneNumber}
+              onChange={(e) => setUserData({ ...userData, phoneNumber: e.target.value })}
+            />
+          </div>
+          <button className={`w-full bg-[#252B42] text-white p-2 px-3 rounded-md ${disabled ? 'bg-slate-500' : ''}`} onClick={handleUserData} disabled={disabled}>Einreichen</button>
+        </section>
+        <section className="w-[90%] md:w-[80%] mb-8 relative flex flex-col items-center justlify-betwene gap-2 mt-8 z-50">
+          <svg className={`absolute hidden md:block top-[-15%] right-[-10%]`} height={400} width={400} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="fill" viewBox="0,0,100,100" width="10%" height="10%"><circle cx="50" cy="50" r="12.5" fill="#c4c4c4"></circle></pattern></defs><path d="M84,64.5Q73,79,56.5,86Q40,93,28.5,79.5Q17,66,14,48.5Q11,31,26,20Q41,9,56,16.5Q71,24,83,37Q95,50,84,64.5Z" stroke="none" stroke-width="0" fill="url(#fill)"></path></svg>
+          <h3 className=''>Frequently Asked Question</h3>
+          <div className="flex flex-col items-start justify-between gap-4 w-full">
+            {
+              faqs.map((faq, key) => {
+                return (
+                  <div key={key} className="flex w-full md:w-[60%] m-auto flex-col items-start gap-2 justify-between  border-b border-b-gray-300 pb-4">
+                    <input onClick={() => showAccordion(key)} type="checkbox" id={key} className='hidden checkbox' />
+                    <label htmlFor={key} className='cursor-pointer flex flex-row items-center justify-between gap-3 checkbox-label'>
+                      <FontAwesomeIcon id={`icon${key}`} icon={faChevronDown} className='h-[10px] width-[10px] rotating-icon' />
+                      <h5>{faq.question}</h5>
+                    </label>
+                    <h6 id={`answer${key}`} className="answer px-[20px] text-justify hidden">{faq.answer}</h6>
+                  </div>
+                )
+              })
+            }
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  )
+}
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+export default Home
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+export const InputField = (props) => {
+  const { label, type, name, id, value, onChange, placeholder } = props
+  return (
+    <div className="flex flex-col items-start justify-between gap-1 w-full">
+      <label htmlFor={id}>{label}</label>
+      <input type={type} name={name} id={id} value={value} onChange={onChange} className="w-full outline-none border border-[#c4c4c4] text-[#252B42] p-2 px-3 rounded-md" placeholder={placeholder} />
+    </div>
+  )
+}
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+export const GradientSVG = () => {
+  return (
+    <svg className='hidden lg:block' viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="c" gradientTransform="rotate(-30 .5 .5)"><stop offset="0%" stop-color="#74EBD5" /><stop offset="100%" stop-color="#9FACE6" /></linearGradient><clipPath id="b"><path fill="currentColor" d="M819 723Q645 946 394.5 852.5t-239-344Q167 258 384.5 222t413 121Q993 500 819 723Z" /></clipPath><filter id="a" x="-50vw" y="-50vh" width="100vw" height="100vh"><feFlood flood-color="#fff" result="neutral-gray" /><feTurbulence type="fractalNoise" baseFrequency="2.5" numOctaves="100" stitchTiles="stitch" result="noise" /><feColorMatrix in="noise" type="saturate" values="0" result="destaturatedNoise" /><feComponentTransfer in="desaturatedNoise" result="theNoise"><feFuncA type="table" tableValues="0 0 0.4 0" /></feComponentTransfer><feBlend in="SourceGraphic" in2="theNoise" mode="soft-light" result="noisy-image" /></filter></defs><g filter="url(#a)" clip-path="url(#b)"><path fill="url(#c)" d="M819 723Q645 946 394.5 852.5t-239-344Q167 258 384.5 222t413 121Q993 500 819 723Z" /></g></svg>
+  )
+}
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+export const DottedSVG = () => {
+  return (
+    <svg className={`absolute top-[-5%] left-[-5%] md:top-[-10%] md:left-[-8%] h-[250px] w-[250px]  md:h-[400px] md:w-[400px]`} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="fill" viewBox="0,0,100,100" width="10%" height="10%"><circle cx="50" cy="50" r="12.5" fill="#c4c4c4"></circle></pattern></defs><path d="M84,64.5Q73,79,56.5,86Q40,93,28.5,79.5Q17,66,14,48.5Q11,31,26,20Q41,9,56,16.5Q71,24,83,37Q95,50,84,64.5Z" stroke="none" stroke-width="0" fill="url(#fill)"></path></svg>
+  )
 }
