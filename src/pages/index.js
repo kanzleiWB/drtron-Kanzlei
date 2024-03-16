@@ -44,7 +44,7 @@ const Home = () => {
     else {
       setError('')
     }
-  }, [userData.phoneNumber])
+  }, [userData.phoneNumber, validPhoneNumberRegx])
   useEffect(() => {
     setValidEmailAddress(validEmailAddressRegx.test(userData.emailAddress));
     if (userData.emailAddress != '' && !validEmailAddressRegx.test(userData.emailAddress)) {
@@ -53,7 +53,7 @@ const Home = () => {
     else {
       setError('')
     }
-  }, [userData.emailAddress])
+  }, [userData.emailAddress, validEmailAddressRegx])
 
   useEffect(() => {
     if (
@@ -67,7 +67,7 @@ const Home = () => {
     } else {
       setDisabled(true);
     }
-  }, [userData.firstName, userData.lastName, userData.phoneNumber, userData.emailAddress])
+  }, [userData.firstName, userData.lastName, userData.phoneNumber, userData.emailAddress, validEmailAddress, validPhoneNumber])
 
 
   const handleUserData = async () => {
@@ -124,7 +124,7 @@ const Home = () => {
           </div>
           <div className="md:basis-1/2 flex items-center justify-center relative">
             <GradientSVG />
-            <Image src={mobileMockup} href='image' height={350} width={350} className='md:absolute'></Image>
+            <Image src={mobileMockup} alt='mobile mockup' href='image' height={350} width={350} className='md:absolute'></Image>
           </div>
         </section>
         <section id='input' className="w-[90%] md:w-[80%] relative flex flex-col items-center justify-between gap-8 z-40">

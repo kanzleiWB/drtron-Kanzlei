@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faCirclePlus, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { InputField } from "@/pages";
 
-const index = () => {
+const Index = () => {
     const [faq, setFaq] = useState({
         question: '',
         answer: ''
@@ -152,7 +152,7 @@ const index = () => {
                     {
                         getFaqs.map((faq, key) => {
                             return (
-                                <div className="flex flex-row items-start justify-between gap-3 w-full">
+                                <div key={key} className="flex flex-row items-start justify-between gap-3 w-full">
                                     <label className="control control-checkbox pt-5">
                                         <input type="checkbox" onChange={(e) => handleRowCheckboxChange(e, key)} className='table-body-checkbox' />
                                         <div className="control_indicator"></div>
@@ -175,4 +175,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Index

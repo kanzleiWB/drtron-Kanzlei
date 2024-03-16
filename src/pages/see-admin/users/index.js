@@ -5,7 +5,7 @@ import { faTrashCan, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const index = () => {
+const Index = () => {
     const [users, setUsers] = useState([]);
     const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
     const fetchUsers = async () => {
@@ -156,4 +156,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Index

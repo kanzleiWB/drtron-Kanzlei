@@ -1,6 +1,6 @@
 import clientPromise from "../../../config/dbConn";
 
-export default async (req, res) => {
+const deleteUsers = async (req, res) => {
     const client = await clientPromise;
     const db = client.db('fraudDetection');
     const { userIds } = req.body;
@@ -11,3 +11,5 @@ export default async (req, res) => {
         res.status(500).json({ message: 'An error occurred while deleting users' });
     }
 };
+
+export default deleteUsers
