@@ -30,14 +30,12 @@ export default function TopNav() {
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarItem>
                     <Link color="foreground" href="#">
-                        {/* About us */}
-                        Über uns
+                        Impressum
                     </Link>
                 </NavbarItem>
                 <NavbarItem >
                     <Link href="#" color="foreground">
-                        {/* faqs */}
-                        Häufige Fragen
+                        Datenschutzerklärung
                     </Link>
                 </NavbarItem>
             </NavbarContent>

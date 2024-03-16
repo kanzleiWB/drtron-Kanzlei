@@ -123,8 +123,8 @@ const Index = () => {
     };
     return (
         <main className='w-full min-h-screen flex flex-col items-center justify-center gap-8 my-8'>
-            <h5 className={`bg-green-600 text-white px-5 py-3 border rounded-md fixed z-50 top-[50px] right-[50px] ${message === '' ? 'hidden' : ''}`}>{message}</h5>
-            <h5 className={`bg-red-600 text-white px-5 py-3 border rounded-md fixed z-50 top-[50px] right-[50px] ${error === '' ? 'hidden' : ''}`}>{error}</h5>
+            <h5 className={`bg-green-600 text-white px-5 py-3 border rounded-md fixed z-50 top-[50px] w-[90%] md:w-[80%] right-[10%] ${message === '' ? 'hidden' : ''}`}>{message}</h5>
+            <h5 className={`bg-red-600 text-white px-5 py-3 border rounded-md fixed z-50 top-[50px] w-[90%] md:w-[80%] right-[10%] ${error === '' ? 'hidden' : ''}`}>{error}</h5>
             <section className='w-[90%] md:w-[80%] flex flex-col md:flex-row items-center justify-start gap-5'>
                 <button onClick={addNewFAQ} className='bg-blue-600 text-white px-5 py-2 btn-text border rounded-md font-bold flex flex-row items-center justify-between gap-2'>
                     <FontAwesomeIcon icon={faCirclePlus} />

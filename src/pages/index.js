@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons'
 import TopNav from '@/components/TopNav'
 import mobileMockup from '../../public/assets/mobileMockup.png'
 import Footer from '@/components/Footer'
@@ -20,7 +20,7 @@ const Home = () => {
   const [validEmailAddress, setValidEmailAddress] = useState(false);
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
-  const validPhoneNumberRegx = /^(\+49)\d{9}$/;
+  const validPhoneNumberRegx = /^(\+49|0)[1-9]\d{1,14}$/
   const validEmailAddressRegx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
   const fetchFAQs = async () => {
@@ -29,7 +29,7 @@ const Home = () => {
     if (Array.isArray(data)) {
       setFaqs(data)
     } else {
-      console.log('data is not an array');
+      // console.log('data is not an array');
     }
   };
   useEffect(() => {
@@ -39,7 +39,7 @@ const Home = () => {
   useEffect(() => {
     setValidPhoneNumber(validPhoneNumberRegx.test(userData.phoneNumber));
     if (userData.phoneNumber != '' && !validPhoneNumberRegx.test(userData.phoneNumber)) {
-      setError('Please enter valid number')
+      setError('Bitte geben Sie eine gültige Nummer ein')
     }
     else {
       setError('')
@@ -48,7 +48,7 @@ const Home = () => {
   useEffect(() => {
     setValidEmailAddress(validEmailAddressRegx.test(userData.emailAddress));
     if (userData.emailAddress != '' && !validEmailAddressRegx.test(userData.emailAddress)) {
-      setError('Please Enter valid Email')
+      setError('Bitte geben Sie Ihre mit Ihrem Deutsche Bank-Konto verknüpfte E-Mail-Adresse an..')
     }
     else {
       setError('')
@@ -81,7 +81,7 @@ const Home = () => {
         body: JSON.stringify(data),
       }).then((response) => response.json())
         .then((data) => {
-          setMessage('Successfully Submitted')
+          setMessage('Wir werden Ihnen in Kürze per E-Mail das Ergebnis der Prüfung des Datenlecks mitteilen. Bitte beachten Sie, dass dies bis zu 24 Stunden dauern kann. Vielen Dank!')
           setUserData({
             firstName: '',
             lastName: '',
@@ -90,10 +90,10 @@ const Home = () => {
           })
         })
         .catch((error) => {
-          setError('An error has occurred. Please try again')
+          setError('Ein Fehler ist aufgetreten. Bitte versuche es erneut')
         });
     } catch (error) {
-      setError('An error has occoured. Please try again')
+      setError('Ein Fehler ist aufgetreten. Bitte versuche es erneut')
     }
     setTimeout(() => {
       setMessage('')
@@ -112,8 +112,8 @@ const Home = () => {
     <>
       <TopNav />
       <main className='w-full relative flex flex-col items-center justify-center gap-8'>
-        <h5 className={`bg-green-600 text-white px-5 py-3 border rounded-md fixed z-50 top-[50px] right-[50px] ${message === '' ? 'hidden' : ''}`}>{message}</h5>
-        <h5 className={`bg-red-600 text-white px-5 py-3 border rounded-md fixed z-50 top-[50px] right-[50px] ${error === '' ? 'hidden' : ''}`}>{error}</h5>
+        <h5 className={`bg-green-600 text-white px-5 py-3 border rounded-md fixed z-50 w-[90%] md:w-[80%] top-[50px] right-[10%] ${message === '' ? 'hidden' : ''}`}>{message}</h5>
+        <h5 className={`bg-red-600 text-white px-5 py-3 border rounded-md fixed z-50 top-[50px] w-[90%] md:w-[80%] right-[10%] ${error === '' ? 'hidden' : ''}`}>{error}</h5>
         <DottedSVG top={'-15%'} left={'-5%'} />
         <section className="mt-8 w-[90%] md:w-[80%] flex flex-col md:flex-row items-center justify-between z-40">
           <div className="md:basis-1/2 flex flex-col items-start justify-between gap-2 md:gap-5">
@@ -124,7 +124,7 @@ const Home = () => {
           </div>
           <div className="md:basis-1/2 flex items-center justify-center relative">
             <GradientSVG />
-            <Image src={mobileMockup} alt='mobile mockup' href='image' height={350} width={350} className='md:absolute'></Image>
+            <Image src={mobileMockup} alt='mobile mockup' href='image' className='md:absolute'></Image>
           </div>
         </section>
         <section id='input' className="w-[90%] md:w-[80%] relative flex flex-col items-center justify-between gap-8 z-40">
@@ -172,6 +172,21 @@ const Home = () => {
             />
           </div>
           <button className={`w-full bg-[#252B42] text-white p-2 px-3 rounded-md ${disabled ? 'bg-slate-500' : ''}`} onClick={handleUserData} disabled={disabled}>Einreichen</button>
+          <p> <b> Hinweis:</b> Wir verwenden Deine Mobilfunknummer und E-Mail-Adresse zur Überprüfung, ob Du von dem Datenleck bei der Deutschen Bank betroffen bist. Der Abgleich Deiner Mobilfunknummer erfolgt auf unserem Server. Eine Weitergabe an Dritte findet nicht statt. Unmittelbar nach dem Abgleich und der Übermittlung des Ergebnisses an Dich wird Deine Mobilfunknummer bei uns gelöscht. Die Verarbeitung ist im Rahmen unserer Vertragserfüllung erforderlich, da die beauftragte Überprüfung sonst nicht möglich ist, Art. 6 Abs. 1 lit. b DSGVO.</p>
+        </section>
+        <section className="w-full bg-teal-400 py-8 my-10">
+          <div className="w-[90%] md:w-[80%] m-auto flex flex-col md:flex-row items-center justify-evenly gap-5">
+            <FontAwesomeIcon icon={faClockRotateLeft} size='2xl' />
+            <div>
+              <h4>Achtung: Seien Sie eine der ersten Personen, die Schadensersatz erhält!</h4>
+              <p>Agieren Sie zügig, um anderen einen Schritt voraus zu sein! Je schneller wir Ihre Daten überprüfen können, desto schneller ist es uns möglich, eine Klage für Sie zu erheben.</p>
+            </div>
+          </div>
+        </section>
+        <section className="flex flex-col items-center justify-between gap-5 my-10 m-auto w-[90%] md:w-[80%]">
+          <h3>Some heading Here</h3>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus enim ipsam sapiente eaque numquam quo recusandae voluptate corrupti voluptas! Labore iusto modi quasi vitae voluptatibus laudantium quas culpa quis nihil, perferendis quod. Cumque id quibusdam suscipit excepturi debitis cum praesentium autem maiores itaque pariatur deserunt, laborum adipisci, consequatur aperiam illum.</p>
+          <iframe className='mt-5 min-h-[300px] md:min-h-[600px] w-full' src="https://www.youtube.com/embed/R0wnnYboa2M?si=3soi4V3J7b72A6O5" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </section>
         <section className="w-[90%] md:w-[80%] mb-8 relative flex flex-col items-center justlify-betwene gap-2 mt-8 z-50">
           <svg className={`absolute hidden md:block top-[-15%] right-[-10%]`} height={400} width={400} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="fill" viewBox="0,0,100,100" width="10%" height="10%"><circle cx="50" cy="50" r="12.5" fill="#c4c4c4"></circle></pattern></defs><path d="M84,64.5Q73,79,56.5,86Q40,93,28.5,79.5Q17,66,14,48.5Q11,31,26,20Q41,9,56,16.5Q71,24,83,37Q95,50,84,64.5Z" stroke="none" stroke-width="0" fill="url(#fill)"></path></svg>
