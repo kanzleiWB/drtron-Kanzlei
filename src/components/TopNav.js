@@ -57,7 +57,7 @@ export default function TopNav() {
             </NavbarContent>
             <NavbarContent justify="end">
                 <NavbarItem>
-                    <Button as={Link} color="primary" href="#input" variant="flat">
+                    <Button as={Link} color="primary" href="/#input" variant="flat">
                         Jetzt kostenfrei Testen
                     </Button>
                 </NavbarItem>
