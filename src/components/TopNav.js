@@ -27,9 +27,9 @@ export default function TopNav() {
         getBrandNameFromDB()
     }, [])
 
-useEffect(() => {
-  console.log(brandName.brandTitle);
-}, [brandName])
+    useEffect(() => {
+        console.log(brandName.brandTitle);
+    }, [brandName])
 
 
     return (
@@ -40,18 +40,17 @@ useEffect(() => {
                     className="sm:hidden"
                 />
                 <NavbarBrand>
-                    <p className="font-bold text-inherit">{brandName.brandTitle}</p>
+                    <Link href={'/'} className="font-bold text-inherit">{brandName.brandTitle}</Link>
                 </NavbarBrand>
             </NavbarContent>
-
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarItem>
-                    <Link color="foreground" href="#">
+                    <Link color="foreground" href="/impressum">
                         Impressum
                     </Link>
                 </NavbarItem>
                 <NavbarItem >
-                    <Link href="#" color="foreground">
+                    <Link href="/datenschutzerklarung" color="foreground">
                         Datenschutzerklärung
                     </Link>
                 </NavbarItem>

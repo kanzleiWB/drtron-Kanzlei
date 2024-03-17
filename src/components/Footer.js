@@ -9,8 +9,8 @@ const Footer = () => {
                 <div className="flex flex-col items-start justify-between gap-2 text-center">
                     <h5 className='font-semibold'>Wichtige Links</h5>
                     <div className="flex flex-col items-start justify-between gap-2">
-                        <Link className='font-normal' href={'/'}>Impressum</Link>
-                        <Link className='font-normal' href={'/'}>Datenschutzerklärung</Link>
+                        <Link className='font-normal' href={'/impressum'}>Impressum</Link>
+                        <Link className='font-normal' href={'/datenschutzerklarung'}>Datenschutzerklärung</Link>
                     </div>
                 </div>
             </section>
