@@ -6,25 +6,22 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 const Index = () => {
     const [values, setValues] = useState({
-        heading: '',
-        paragraph: '',
-        videoLink: ''
+        _id: 'brand-name',
+        brandTitle: '',
     })
     const [message, setMessage] = useState('')
     const [error, setError] = useState('')
 
     const cancelSetValues = () => {
         setValues({
-            _id: 'video-embedding',
-            heading: '',
-            paragraph: '',
-            videoLink: ''
+            _id: 'brand-name',
+            brandTitle: ''
         })
     }
 
     const uploadvaluesToDB = () => {
-        if (values.heading === '' || values.paragraph === '' || values.videoLink === '') {
-            setError('Please fill all the fields')
+        if (values.brandTitle === '') {
+            setError('Please write the brand name')
             setTimeout(() => {
                 setMessage('')
             }, 3000);
@@ -35,7 +32,7 @@ const Index = () => {
         }
         const data = values;
         try {
-            fetch("/api/uploadVideoEmbedding", {
+            fetch("/api/updateBrandName", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -64,9 +61,7 @@ const Index = () => {
                     <FontAwesomeIcon icon={faArrowLeft} />
                     <p>Back</p>
                 </Link>
-                <InputField label="Heading" type="text" name="heading" id="heading" value={values.heading} onChange={(e) => setValues({ ...values, heading: e.target.value })} />
-                <InputField label="Paragraph" type="text" name="paragraph" id="paragraph" value={values.paragraph} onChange={(e) => setValues({ ...values, paragraph: e.target.value })} />
-                <InputField label="Video Link" type="text" name="videoLink" id="videoLink" value={values.videoLink} onChange={(e) => setValues({ ...values, videoLink: e.target.value })} />
+                <InputField label="Brand Title" type="text" name="heading" id="heading" value={values.brandTitle} onChange={(e) => setValues({ ...values, brandTitle: e.target.value })} />
                 <div className="flex flex-row items-center gap-4 justify-end w-full">
                     <button onClick={cancelSetValues} className="bg-slate-500 text-white px-5 py-2 btn-text border rounded-md font-bold flex flex-row items-center justify-between gap-2">Cancel</button>
                     <button onClick={uploadvaluesToDB} className="bg-green-600 text-white px-5 py-2 btn-text border rounded-md font-bold flex flex-row items-center justify-between gap-2">Add</button>

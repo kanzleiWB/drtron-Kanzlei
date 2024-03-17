@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button } from "@nextui-org/react";
 
 export default function TopNav() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [brandName, setBrandName] = useState([])
 
     const menuItems = [
         {
@@ -15,6 +16,22 @@ export default function TopNav() {
         },
     ];
 
+    useEffect(() => {
+        const getBrandNameFromDB = async () => {
+            const response = await fetch('/api/getBrandNameFromDB')
+            const data = await response.json();
+            if (data) {
+                setBrandName(data);
+            }
+        }
+        getBrandNameFromDB()
+    }, [])
+
+useEffect(() => {
+  console.log(brandName.brandTitle);
+}, [brandName])
+
+
     return (
         <Navbar onMenuOpenChange={setIsMenuOpen} shouldHideOnScroll className="bg-[#FAFAFA] border-b z-50">
             <NavbarContent>
@@ -23,7 +40,7 @@ export default function TopNav() {
                     className="sm:hidden"
                 />
                 <NavbarBrand>
-                    <p className="font-bold text-inherit">Deutsche Bank</p>
+                    <p className="font-bold text-inherit">{brandName.brandTitle}</p>
                 </NavbarBrand>
             </NavbarContent>
 

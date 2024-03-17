@@ -11,6 +11,7 @@ const Index = () => {
                 <Link href={'see-admin/users'} className='bg-blue-600 btn-text text-white px-5 py-3 border rounded-md font-bold'>See users</Link>
                 <Link href={'see-admin/edit-faqs'} className='bg-blue-600 btn-text text-white px-5 py-3 border rounded-md font-bold'>Edit FAQs</Link>
                 <Link href={'see-admin/edit-embeded-video'} className='bg-blue-600 btn-text text-white px-5 py-3 border rounded-md font-bold'>Edit Embeded Video Content</Link>
+                <Link href={'see-admin/edit-brand-name'} className='bg-blue-600 btn-text text-white px-5 py-3 border rounded-md font-bold'>Edit Brand Name</Link>
             </section>
         </main>
     )

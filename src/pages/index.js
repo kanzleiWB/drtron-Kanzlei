@@ -6,6 +6,7 @@ import { faChevronDown, faClockRotateLeft } from '@fortawesome/free-solid-svg-ic
 import TopNav from '@/components/TopNav'
 import mobileMockup from '../../public/assets/mobileMockup.png'
 import Footer from '@/components/Footer'
+import VideoEmbedding from '@/components/VideoEmbedding'
 
 const Home = () => {
   const [userData, setUserData] = useState({
@@ -184,9 +185,10 @@ const Home = () => {
           </div>
         </section>
         <section className="flex flex-col items-center justify-between gap-5 my-10 m-auto w-[90%] md:w-[80%]">
-          <h3>Some heading Here</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus enim ipsam sapiente eaque numquam quo recusandae voluptate corrupti voluptas! Labore iusto modi quasi vitae voluptatibus laudantium quas culpa quis nihil, perferendis quod. Cumque id quibusdam suscipit excepturi debitis cum praesentium autem maiores itaque pariatur deserunt, laborum adipisci, consequatur aperiam illum.</p>
-          <iframe className='mt-5 min-h-[300px] md:min-h-[600px] w-full' src="https://www.youtube.com/embed/R0wnnYboa2M?si=3soi4V3J7b72A6O5" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          {/* <h3>Some heading Here</h3>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus enim ipsam sapiente eaque numquam quo recusandae voluptate corrupti voluptas! Labore iusto modi quasi vitae voluptatibus laudantium quas culpa quis nihil, perferendis quod. Cumque id quibusdam suscipit excepturi debitis cum praesentium autem maiores itaque pariatur deserunt, laborum adipisci, consequatur aperiam illum.</p> */}
+          {/* <iframe className='mt-5 min-h-[300px] md:min-h-[600px] w-full' src="https://www.youtube.com/embed/R0wnnYboa2M?si=3soi4V3J7b72A6O5" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe> */}
+          <VideoEmbedding />
         </section>
         <section className="w-[90%] md:w-[80%] mb-8 relative flex flex-col items-center justlify-betwene gap-2 mt-8 z-50">
           <svg className={`absolute hidden md:block top-[-15%] right-[-10%]`} height={400} width={400} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="fill" viewBox="0,0,100,100" width="10%" height="10%"><circle cx="50" cy="50" r="12.5" fill="#c4c4c4"></circle></pattern></defs><path d="M84,64.5Q73,79,56.5,86Q40,93,28.5,79.5Q17,66,14,48.5Q11,31,26,20Q41,9,56,16.5Q71,24,83,37Q95,50,84,64.5Z" stroke="none" stroke-width="0" fill="url(#fill)"></path></svg>
