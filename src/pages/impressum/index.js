@@ -12,7 +12,7 @@ const Index = () => {
                 </section>
                 <section className='w-[90%] md:w-[80%] m-auto flex flex-col items-start justify-between gap-5 z-40'>
                     <div className='flex flex-col items-start justify-between gap-1 font-bold'>
-                        <h4>WBS.LEGAL</h4>
+                        <h4>Dr. Tron eKanzlei</h4>
                         <h6>Rechtsanwaltsgesellschaft mbH & Co. KG</h6>
                     </div>
                     <div className='flex flex-col items-start justify-between gap-1 text-xl'>
