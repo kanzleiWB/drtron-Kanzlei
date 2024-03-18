@@ -50,6 +50,11 @@ export default function TopNav() {
                         Datenschutzerklärung
                     </Link>
                 </NavbarItem>
+                <NavbarItem >
+                    <Link href="/#video" color="foreground">
+                        Über uns
+                    </Link>
+                </NavbarItem>
             </NavbarContent>
             <NavbarContent justify="end">
                 <NavbarItem>

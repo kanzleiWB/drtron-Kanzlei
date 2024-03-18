@@ -184,7 +184,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex flex-col items-center justify-between gap-5 my-10 m-auto w-[90%] md:w-[80%]">
+        <section id='video' className="flex flex-col items-center justify-between gap-5 my-10 m-auto w-[90%] md:w-[80%]">
           {/* <h3>Some heading Here</h3>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus enim ipsam sapiente eaque numquam quo recusandae voluptate corrupti voluptas! Labore iusto modi quasi vitae voluptatibus laudantium quas culpa quis nihil, perferendis quod. Cumque id quibusdam suscipit excepturi debitis cum praesentium autem maiores itaque pariatur deserunt, laborum adipisci, consequatur aperiam illum.</p> */}
           {/* <iframe className='mt-5 min-h-[300px] md:min-h-[600px] w-full' src="https://www.youtube.com/embed/R0wnnYboa2M?si=3soi4V3J7b72A6O5" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe> */}
