@@ -178,7 +178,7 @@ const Home = () => {
         <section className="w-full bg-teal-400 py-8 my-10">
           <div className="w-[90%] md:w-[80%] m-auto flex flex-col md:flex-row items-center justify-evenly gap-5">
             <FontAwesomeIcon icon={faClockRotateLeft} size='2xl' />
-            <div>
+            <div className='flex flex-col items-start justify-between gap-4'>
               <h4>Achtung: Seien Sie eine der ersten Personen, die Schadensersatz erhält!</h4>
               <p>Agieren Sie zügig, um anderen einen Schritt voraus zu sein! Je schneller wir Ihre Daten überprüfen können, desto schneller ist es uns möglich, eine Klage für Sie zu erheben.</p>
             </div>

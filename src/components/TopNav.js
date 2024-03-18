@@ -27,10 +27,6 @@ export default function TopNav() {
         getBrandNameFromDB()
     }, [])
 
-    useEffect(() => {
-        console.log(brandName.brandTitle);
-    }, [brandName])
-
 
     return (
         <Navbar onMenuOpenChange={setIsMenuOpen} shouldHideOnScroll className="bg-[#FAFAFA] border-b z-50">
