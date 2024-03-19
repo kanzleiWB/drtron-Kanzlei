@@ -23,7 +23,7 @@ const Index = () => {
                     <div className='flex flex-col items-start justify-between gap-1 text-xl'>
                         <p className='text-lg'>Tel.: 0221 / 95 15 63 0</p>
                         <p className='text-lg'>Fax: 0221 / 400 675 52</p>
-                        <p className='text-lg'>E-Mail: info@niggers.de</p>
+                        <p className='text-lg'>E-Mail: info@etron-ekanzlei.de</p>
                     </div>
                 </section>
                 <section className='w-[90%] md:w-[80%] m-auto flex flex-col items-start justify-between gap-8 z-40'>
@@ -53,7 +53,7 @@ const Index = () => {
                     <div className='flex flex-col items-start justify-between gap-1 text-xl'>
                         <p className='text-lg'>Tel. 0221-97 30 10-0</p>
                         <p className='text-lg'>Fax. 0221-97 30 10-50</p>
-                        <p className='text-lg'>E-Mail: kontakt@rak-koeln.de</p>
+                        <p className='text-lg'>E-Mail: info@etron-ekanzlei.de</p>
                     </div>
                     <div className='flex flex-col items-start justify-between gap-1 text-xl'>
                         <p className='text-lg'>Die Berufsbezeichnung „Rechtsanwalt“ bzw. „Rechtsanwältin“ sowie Fachanwaltsbezeichnungen wurden in der Bundesrepublik Deutschland verliehen.</p>
