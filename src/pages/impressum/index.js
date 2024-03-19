@@ -45,9 +45,9 @@ const Index = () => {
                         <h4>Zuständige Aufsichtsbehörde (iSv. § 5 Abs. 1 Nr. 3 TMG):</h4>
                     </div>
                     <div className='flex flex-col items-start justify-between gap-1 text-xl'>
-                        <p className='text-lg'>Rechtsanwaltskammer Köln</p>
-                        <p className='text-lg'>Riehler Strasse 30,</p>
-                        <p className='text-lg'>50668 Köln,</p>
+                        <p className='text-lg'>Rechtsanwaltskammer Frankfurt am Main</p>
+                        <p className='text-lg'>Bockenheimer Anlage 36</p>
+                        <p className='text-lg'>60322 Frankfurt am Main</p>
                         <p className='text-lg'>Deutschland</p>
                     </div>
                     <div className='flex flex-col items-start justify-between gap-1 text-xl'>
@@ -65,10 +65,11 @@ const Index = () => {
                         <h4>Berufsrechtliche Regelungen:</h4>
                     </div>
                     <ul className='flex list-disc flex-col items-start justify-between gap-1 text-xl'>
-                        <li className='text-lg'>Rechtsanwaltskammer Frankfurt am Main</li>
-                        <li className='text-lg'>Bockenheimer Anlage 36</li>
-                        <li className='text-lg'>60322 Frankfurt am Main</li>
-                        <li className='text-lg'>Deutschland</li>
+                        <li className='text-lg'>Bundesrechtsanwaltsordnung (BRAO)</li>
+                        <li className='text-lg'>Berufsordnung für Rechtsanwälte (BORA)</li>
+                        <li className='text-lg'>Fachanwaltsordnung (FAO)</li>
+                        <li className='text-lg'>Rechtsanwaltsvergütungsgesetz (RVG)</li>
+                        <li className='text-lg'>Berufsregelungen der Rechtsanwälte der Europäischen Union Die Regelungen können bei der Bundesrechtsanwaltskammer unter http://www.brak.de/seiten/06.php#tdg eingesehen werden***</li>
                     </ul>
                 </section>
             </main>
