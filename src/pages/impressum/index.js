@@ -13,34 +13,17 @@ const Index = () => {
                 <section className='w-[90%] md:w-[80%] m-auto flex flex-col items-start justify-between gap-5 z-40'>
                     <div className='flex flex-col items-start justify-between gap-1 font-bold'>
                         <h4>Dr. Tron eKanzlei</h4>
-                        <h6>Rechtsanwaltsgesellschaft mbH & Co. KG</h6>
+                        <h6>RA Dr. Patrick Tron</h6>
                     </div>
                     <div className='flex flex-col items-start justify-between gap-1 text-xl'>
-                        <p className='text-lg'>Eupener Straße 67</p>
-                        <p className='text-lg'>50933 Köln</p>
+                        <p className='text-lg'>Bad Nauheimer Str. 4</p>
+                        <p className='text-lg'>64289 Darmstadt</p>
                         <p className='text-lg'>Deutschland</p>
                     </div>
                     <div className='flex flex-col items-start justify-between gap-1 text-xl'>
                         <p className='text-lg'>Tel.: 0221 / 95 15 63 0</p>
                         <p className='text-lg'>Fax: 0221 / 400 675 52</p>
-                        <p className='text-lg'>E-Mail: info@wbs.legal</p>
-                    </div>
-                    <div className='flex flex-col items-start justify-between gap-1 text-xl'>
-                        <p className='text-lg'>Handelsregister: AG Köln, HRA 37414</p>
-                    </div>
-                    <div className='flex flex-col items-start justify-between gap-1 text-xl'>
-                        <p className='text-lg'>Umsatzsteuer-Identifikationsnummer: DE122746111</p>
-                    </div>
-                    <div className='flex flex-col items-start justify-between gap-1 text-xl'>
-                        <p className='text-lg'>Persönlich haftende Gesellschafterin:</p>
-                    </div>
-                    <div className='flex flex-col items-start justify-between gap-1 text-xl'>
-                        <p className='text-lg'>WBS.LEGAL</p>
-                        <p className='text-lg'>Management- und Rechtsanwaltsgesellschaft mbH</p>
-                    </div>
-                    <div className='flex flex-col items-start justify-between gap-1 text-xl'>
-                        <p className='text-lg'>Handelsregister: AG Köln, HRB 116973</p>
-                        <p className='text-lg'>Einzelvertretungsberechtigte Geschäftsführer: Christian Solmecke, Kilian Kost, Jeremy Gartner</p>
+                        <p className='text-lg'>E-Mail: info@niggers.de</p>
                     </div>
                 </section>
                 <section className='w-[90%] md:w-[80%] m-auto flex flex-col items-start justify-between gap-8 z-40'>
@@ -82,9 +65,9 @@ const Index = () => {
                         <h4>Berufsrechtliche Regelungen:</h4>
                     </div>
                     <ul className='flex list-disc flex-col items-start justify-between gap-1 text-xl'>
-                        <li className='text-lg'>Rechtsanwaltskammer Köln</li>
-                        <li className='text-lg'>Riehler Strasse 30,</li>
-                        <li className='text-lg'>50668 Köln,</li>
+                        <li className='text-lg'>Rechtsanwaltskammer Frankfurt am Main</li>
+                        <li className='text-lg'>Bockenheimer Anlage 36</li>
+                        <li className='text-lg'>60322 Frankfurt am Main</li>
                         <li className='text-lg'>Deutschland</li>
                     </ul>
                 </section>
