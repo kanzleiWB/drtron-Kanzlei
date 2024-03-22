@@ -46,8 +46,8 @@ export default function TopNav() {
                     </Link>
                 </NavbarItem>
                 <NavbarItem >
-                    <Link href="/datenschutzerklarung" color="foreground">
-                        Datenschutzerklärung
+                    <Link href="/#fragen" color="foreground">
+                        Häufig gestellte Fragen
                     </Link>
                 </NavbarItem>
                 <NavbarItem >
