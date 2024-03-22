@@ -190,7 +190,7 @@ const Home = () => {
           {/* <iframe className='mt-5 min-h-[300px] md:min-h-[600px] w-full' src="https://www.youtube.com/embed/R0wnnYboa2M?si=3soi4V3J7b72A6O5" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe> */}
           <VideoEmbedding />
         </section>
-        <section id='fragen' className="w-[90%] md:w-[80%] mb-8 relative flex flex-col items-center justlify-betwene gap-2 mt-8 z-50">
+        <section id='fragen' className="w-[90%] md:w-[80%] mb-8 relative flex flex-col items-center justlify-betwene gap-2 mt-8 z-50" py-8>
           <svg className={`absolute hidden md:block top-[-15%] right-[-10%]`} height={400} width={400} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="fill" viewBox="0,0,100,100" width="10%" height="10%"><circle cx="50" cy="50" r="12.5" fill="#c4c4c4"></circle></pattern></defs><path d="M84,64.5Q73,79,56.5,86Q40,93,28.5,79.5Q17,66,14,48.5Q11,31,26,20Q41,9,56,16.5Q71,24,83,37Q95,50,84,64.5Z" stroke="none" stroke-width="0" fill="url(#fill)"></path></svg>
           <h3 className=''>Häufig gestellte Fragen</h3>
           <div className="flex flex-col items-start justify-between gap-4 w-full">
