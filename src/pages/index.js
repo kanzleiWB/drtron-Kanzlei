@@ -21,7 +21,7 @@ const Home = () => {
   const [validEmailAddress, setValidEmailAddress] = useState(false);
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
-  const validPhoneNumberRegx = /^(\49|0)[1-9]\d{1,14}$/
+  const validPhoneNumberRegx = /^(\+49|0)[1-9]\d{1,14}$/
   const validEmailAddressRegx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
   const fetchFAQs = async () => {
