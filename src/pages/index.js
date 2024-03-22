@@ -118,10 +118,9 @@ const Home = () => {
         <DottedSVG top={'-15%'} left={'-5%'} />
         <section className="mt-8 w-[90%] md:w-[80%] flex flex-col md:flex-row items-center justify-between z-40">
           <div className="md:basis-1/2 flex flex-col items-start justify-between gap-2 md:gap-5">
-            <h3>Dein Geld in Gefahr!</h3>
-            <h1>Deine Chance auf 3320€</h1>
-            <h4>Prüfen Sie, ob Ihre Daten vom Datenleck
-              der Deutschen Bank betroffen sind.</h4>
+            <h3>Ihr Geld ist in Gefahr!</h3>
+            <h1>Ihre Chance auf 3.320 €</h1>
+            <h4>Prüfen Sie, ob Ihre Daten vom Datenleck der Deutschen Bank betroffen sind.</h4>
           </div>
           <div className="md:basis-1/2 flex items-center justify-center relative">
             <GradientSVG />
@@ -132,8 +131,8 @@ const Home = () => {
           <div className="flex flex-col items-center justify-between gap-4 w-full md:w-[80%] text-center lg:w-[50%]">
             <h2 className='leading-[44px]'>Ihr Konto ist in Gefahr. <br />
               Jetzt auf Datenleck prüfen.</h2>
-            <p>Sichern Sie sich bis zu 3.320€ Entschädigung für Betroffene des  Datenlecks durch Angriffe der russischen Hackergruppe
-              Lazarus Group  auf Deutsche Bank-Server.</p>
+            <p>Sichern Sie sich bis zu 3.320€ Entschädigung für Betroffene des Datenlecks durch Angriffe der russischen Hackergruppe
+              Lazarus Group auf Deutsche Bank-Server.</p>
           </div>
           <div className="flex flex-col md:flex-row items-center justify-between gap-5 w-full">
             <InputField
@@ -173,14 +172,14 @@ const Home = () => {
             />
           </div>
           <button className={`w-full bg-[#252B42] text-white p-2 px-3 rounded-md ${disabled ? 'bg-slate-500' : ''}`} onClick={handleUserData} disabled={disabled}>Einreichen</button>
-          <p> <b> Hinweis:</b> Wir verwenden Deine Mobilfunknummer und E-Mail-Adresse zur Überprüfung, ob Du von dem Datenleck bei der Deutschen Bank betroffen bist. Der Abgleich Deiner Mobilfunknummer erfolgt auf unserem Server. Eine Weitergabe an Dritte findet nicht statt. Unmittelbar nach dem Abgleich und der Übermittlung des Ergebnisses an Dich wird Deine Mobilfunknummer bei uns gelöscht. Die Verarbeitung ist im Rahmen unserer Vertragserfüllung erforderlich, da die beauftragte Überprüfung sonst nicht möglich ist, Art. 6 Abs. 1 lit. b DSGVO.</p>
+          <p> <b> Hinweis:</b> Hinweis: Wir verwenden Ihre Mobilfunknummer und E-Mail-Adresse zur Überprüfung, ob Sie von dem Datenleck bei der Deutschen Bank betroffen sind. Der Abgleich Ihrer Mobilfunknummer erfolgt auf unserem Server. Eine Weitergabe an Dritte findet nicht statt. Unmittelbar nach dem Abgleich und der Übermittlung des Ergebnisses an Sie wird Ihre Mobilfunknummer bei uns gelöscht. Die Verarbeitung ist im Rahmen unserer Vertragserfüllung erforderlich, da die beauftragte Überprüfung sonst nicht möglich ist, siehe Art. 6 Abs. 1 lit. b DSGVO.</p>
         </section>
         <section className="w-full bg-teal-400 py-8 my-10">
           <div className="w-[90%] md:w-[80%] m-auto flex flex-col md:flex-row items-center justify-evenly gap-5">
             <FontAwesomeIcon icon={faClockRotateLeft} size='2xl' />
             <div className='flex flex-col items-start justify-between gap-4'>
               <h4>Achtung: Seien Sie eine der ersten Personen, die Schadensersatz erhält!</h4>
-              <p>Agieren Sie zügig, um anderen einen Schritt voraus zu sein! Je schneller wir Ihre Daten überprüfen können, desto schneller ist es uns möglich, eine Klage für Sie zu erheben.</p>
+              <p>Agieren Sie zügig und seien Sie anderen einen Schritt voraus! Je schneller wir Ihre Daten überprüfen können, desto schneller ist es uns möglich, eine Klage für Sie zu erheben.</p>
             </div>
           </div>
         </section>
