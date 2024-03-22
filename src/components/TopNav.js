@@ -8,7 +8,7 @@ export default function TopNav() {
     const menuItems = [
         {
             name: 'Über uns',
-            tagetLink: '/about'
+            tagetLink: '/video'
         },
         {
             name: 'Häufige Fragen',
